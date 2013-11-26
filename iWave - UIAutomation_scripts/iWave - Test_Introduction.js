@@ -35,4 +35,5 @@ mainMenuView.newsAboutLogOut();
 
 logInView = new LogInView;
 logInView.setLoginToDefault 
+UIATarget.localTarget().deactivateAppForDuration(2); 
 });
