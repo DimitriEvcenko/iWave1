@@ -111,4 +111,4 @@ loginView = new LogInView();
 
 loginView.setLoginToDefault();
 	 
-});
+})

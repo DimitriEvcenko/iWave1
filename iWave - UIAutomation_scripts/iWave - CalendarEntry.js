@@ -66,12 +66,19 @@ CalendarEntry.prototype.createRandomCalendarEntry = function(x, y, z){
 	this.createRandomCalendarEntry(x, y, z);}
 	UIATarget.localTarget().delay(1);
 	
-	while (!UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].toolbar().buttons()["Cancel"].isVisible()){
+	while(!UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].toolbar().buttons()["Cancel"].isVisible())
+	{UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayTo].buttons()[0].tap();
+	UIATarget.localTarget().delay(1);}
 	
-	UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayTo].buttons()[0].tap();
+	while(UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].value() == null){
+	UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].toolbar().buttons()["Delete"].tap();
 	UIATarget.localTarget().delay(1);
-	}
+	UIATarget.localTarget().frontMostApp().mainWindow().navigationBars()["Caribbean"].buttons()["Mainmenu"].tap()
+	;
 	
+	calendarEntry = new CalendarEntry();
+	calendarEntry.createRandomCalendarEntry(1, 26, 30);
+	}
 	
 	var date = new Date();
 	var month = new Array("01", "02", "03", "04", "05", "06",
