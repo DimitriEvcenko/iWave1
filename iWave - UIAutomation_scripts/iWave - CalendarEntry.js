@@ -43,20 +43,18 @@ CalendarEntry.prototype.createRandomCalendarEntry = function(x, y, z){
 	
 	var vacationCellTypeArray = ["Holiday", "Parentalleave", "Seminar", "Flexible Time", "Sabbatical"];
 	var vacationType = vacationCellTypeArray[Math.floor(Math.random() * vacationCellTypeArray.length)];
-
-	if (x > 2)	{
-	
-	UIATarget.localTarget().frontMostApp().mainWindow().segmentedControls()[0].buttons()["Next month"].tap();
-	UIATarget.localTarget().delay(1);
-	this.x = 0;}
 		
 	UIATarget.localTarget().frontMostApp().logElementTree();
 	var dayFromValue = UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayFrom].buttons()[0].name();
 	var dayToValue = UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayTo].buttons()[0].name();
+	
+	UIATarget.localTarget().frontMostApp().mainWindow().segmentedControls()[0].buttons()["Next month"].tap();
+	UIATarget.localTarget().delay(1);
+	
 	UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayFrom].buttons()[0].tap();
 	UIATarget.localTarget().delay(1);
 	
-	if(UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].isVisible() && UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].value() == null){
+	if(UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].isVisible() && UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].value() != null){
 	UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].toolbar().buttons()["Delete"].tap();
 	UIATarget.localTarget().delay(1);
 	UIATarget.localTarget().frontMostApp().mainWindow().navigationBars()["Caribbean"].buttons()["Mainmenu"].tap()
