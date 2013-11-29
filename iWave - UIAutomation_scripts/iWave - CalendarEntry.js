@@ -56,8 +56,6 @@ CalendarEntry.prototype.createRandomCalendarEntry = function(x, y, z){
 	UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[dayFrom].buttons()[0].tap();
 	UIATarget.localTarget().delay(1);
 	
-	UIATarget.localTarget().delay(1);
-	
 	if(UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].isVisible() && UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].cells()["Comment"].value() == null){
 	UIATarget.localTarget().frontMostApp().mainWindow().tableViews()["Empty list"].toolbar().buttons()["Delete"].tap();
 	UIATarget.localTarget().delay(1);
