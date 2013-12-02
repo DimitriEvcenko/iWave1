@@ -505,7 +505,7 @@ CalendarEntry.prototype.goThroughCalendar = function (){
 	
 	var date = new Date();
 	
-	var month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");	
+	var month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "January");	
 	
 	var currentMonth = month[date.getMonth()];
 	var currentYear = date.getFullYear();
@@ -574,10 +574,14 @@ CalendarEntry.prototype.goThroughCalendar = function (){
 	UIATarget.localTarget().delay(3);}else{
 	   UIALogger.logFail(testName);}
 	
-	if(UIATarget.localTarget().frontMostApp().mainWindow().staticTexts()[0].name() == (currentYear) + " " + month[(date.getMonth())+1]){   
+	if(UIATarget.localTarget().frontMostApp().mainWindow().staticTexts()[0].name() == (currentYear) + " " + (month[(date.getMonth())+1])){   
+	UIATarget.localTarget().frontMostApp().mainWindow().segmentedControls()[0].buttons()["Today"].tap();
+	UIATarget.localTarget().delay(3);}
+	else if(UIATarget.localTarget().frontMostApp().mainWindow().staticTexts()[0].name() == (currentYear +1) + " " + (month[(date.getMonth())+1])){   
 	UIATarget.localTarget().frontMostApp().mainWindow().segmentedControls()[0].buttons()["Today"].tap();
 	UIATarget.localTarget().delay(3);}else{
-	   UIALogger.logFail(testName);}
+	   UIALogger.logFail(testName);
+	}
 	   
 	if(UIATarget.localTarget().frontMostApp().mainWindow().staticTexts()[0].name() == (currentYear) + " " + currentMonth){
 	UIATarget.localTarget().frontMostApp().mainWindow().navigationBars()["Caribbean"].buttons()["Mainmenu"].tap()

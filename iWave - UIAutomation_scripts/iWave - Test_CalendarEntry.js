@@ -15,7 +15,7 @@ calendarEntry.enterCalendarView();
 calendarEntry.createRandomCalendarEntry(0, 26, 30);
 	 
 });
-/*
+
 // -- creates a calendar entry test with the given values and deletes it immediately
 
 test("calendar entry test followed by deleting the entry immediately", function(target, app) {
@@ -111,4 +111,4 @@ loginView = new LogInView();
 
 loginView.setLoginToDefault();
 	 
-})*/
+})
