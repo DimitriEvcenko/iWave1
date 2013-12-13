@@ -14,8 +14,35 @@ CalendarEntry.prototype.enterCalendarView = function() {
 	UIATarget.localTarget().frontMostApp().mainWindow().collectionViews()[0].cells()[1].buttons()["Caribbean"].tap();
 	UIATarget.localTarget().frontMostApp().logElementTree();
 	UIATarget.localTarget().delay(1);
-}	
+}
+
+// -- deletes all calendar entrys in demands view
+
+CalendarEntry.prototype.deleteAllCalendarEntries = function() {
 	
+	var testName = "calendar delete test 1"	
+
+UIATarget.localTarget().frontMostApp().mainWindow().tabBar().buttons()["Demands"].tap();
+	UIATarget.localTarget().delay(1);
+	UIATarget.localTarget().frontMostApp().logElementTree();
+	UIATarget.localTarget().frontMostApp().mainWindow().tableViews()[1].toolbar().buttons()["Vacation Demands"].tap();
+	UIATarget.localTarget().frontMostApp().logElementTree();
+	UIATarget.localTarget().delay(1);
+	
+	while (UIATarget.localTarget().frontMostApp().mainWindow().popover().tableViews()["Empty list"].cells().length > 0)
+	{
+		UIATarget.localTarget().frontMostApp().mainWindow().popover().tableViews()["Empty list"].cells()[0].dragInsideWithOptions({startOffset:{x:0.0, y:0.1}, endOffset:{x:0.5, y:0.1}, duration:0.25});
+		UIATarget.localTarget().frontMostApp().mainWindow().popover().tableViews()["Empty list"].cells()[0].buttons()[0].tap();
+	}
+	if (UIATarget.localTarget().frontMostApp().mainWindow().popover().tableViews()["Empty list"].cells().length == null){
+	
+	UIATarget.localTarget().frontMostApp().mainWindow().navigationBars()["Caribbean"].buttons()["Mainmenu"].tap()
+	;
+	UIATarget.localTarget().delay(1);
+	UIALogger.logPass(testName);}else{
+    UIALogger.logFail(testName);} 
+	}
+
 // -- creates a calendar entry with the given values and deletes it at the end - checks whether the calendar entry was saved and displayed correctly or not
 
 CalendarEntry.prototype.createRandomCalendarEntry = function(x, y, z){

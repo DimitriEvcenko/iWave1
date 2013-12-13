@@ -3,6 +3,19 @@
 #import "iWave - CalendarEntry.js"
 #import "/Users/dimitrievcenko/.jenkins/jobs/iWave/workspace/Pods/tuneup_js/tuneup.js"
 
+// -- performs a calendar entry delete test 
+
+test("deletes all calendar entrys in demands view", function(target, app) {
+
+mainMenuView = new MainMenuView();
+mainMenuView.checkIfLoggedInLogIn();
+	 
+calendarEntry = new CalendarEntry();
+calendarEntry.enterCalendarView();
+calendarEntry.deleteAllCalendarEntries();
+	 
+});
+
 // -- performs a calendar entry test with the given values and deletes it at the end
 
 test("calendar entry test followed by deleting the entry at the end", function(target, app) {
